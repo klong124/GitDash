@@ -6,7 +6,7 @@ import {auth} from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+const Fdslfkdjs = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
@@ -69,13 +69,13 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(Fdslfkdjs)
+export const Signup = connect(mapSignup, mapDispatch)(Fdslfkdjs)
 
 /**
  * PROP TYPES
  */
-AuthForm.propTypes = {
+Fdslfkdjs.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
