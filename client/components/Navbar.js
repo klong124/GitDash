@@ -10,7 +10,10 @@ const Navbar = (props) => (
       <div>
         <Link to="/internal-contributors">Top Contributors</Link>
         <Link to="/by-stars">Top Repositories</Link>
-        <input className="form-control" type="text" name="org" placeholder="Enter GitHub organization name" value={props.name} onKeyPress={props.handleChange}/>
+        <input className="form-control" type="text" name="org" placeholder="Enter GitHub organization name" onKeyPress={props.handleChange}/>
+        <hr />
+        Current Organization is {props.name}
+        <a href="/auth/github">Log In with GitHub</a>
       </div>
     </nav>
     <hr />

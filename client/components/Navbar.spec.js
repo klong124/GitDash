@@ -4,19 +4,19 @@ import {expect} from 'chai'
 import React from 'react'
 import enzyme, {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import {Fsdjfk} from './fsdjfk'
+import {Navbar} from './Navbar'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
 
-describe('Fsdjfk', () => {
-  let userHome
+describe('Navbar', () => {
+  let nav
 
   beforeEach(() => {
-    userHome = shallow(<Fsdjfk email="cody@email.com" />)
+    nav = shallow(<Navbar />)
   })
 
-  it('renders the email in an h3', () => {
-    expect(userHome.find('h3').text()).to.be.equal('Welcome, cody@email.com')
+  it('renders the name of the program', () => {
+    expect(nav.find('h1').text()).to.be.equal('GitDash')
   })
 })
