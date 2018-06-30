@@ -18,16 +18,23 @@ const defaultOrg = ""
 const getOrgInfo = (org) => ({type: GET_ORG, org})
 const putOrg = (org) => ({type: PUT_ORG, org})
 
+
+
+// export const writeOrg = (org) => async (dispatch) => {
+//   dispatch(putOrg(org))
+// }
+
 /**
  * THUNK CREATORS
  */
 
-export const writeOrg = (org) => async dispatch => {
+export const writeOrg = (org) => (dispatch) => {
   dispatch(putOrg(org))
-}
-
-export const readOrg = () => async dispatch => {
-
+  return axios.get(`https://api.github.com/search/repositories?q=$web`)
+    .then(res => res.data)
+    .then(info => {
+      console.log("Info is", info)
+    })
 }
 
 /**
