@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 
 /**
  * ACTION TYPES
@@ -10,31 +9,36 @@ const PUT_ORG = 'PUT_ORG'
 /**
  * INITIAL STATE
  */
-const defaultOrg = ""
+const defaultOrg = {}
 
 /**
  * ACTION CREATORS
  */
-const getOrgInfo = (org) => ({type: GET_ORG, org})
-const putOrg = (org) => ({type: PUT_ORG, org})
+const putOrg = (name, repos, contrs) => ({type: PUT_ORG, name, repos, contrs})
 
-
-
-// export const writeOrg = (org) => async (dispatch) => {
-//   dispatch(putOrg(org))
-// }
 
 /**
  * THUNK CREATORS
  */
 
-export const writeOrg = (org) => (dispatch) => {
-  dispatch(putOrg(org))
-  return axios.get(`https://api.github.com/search/repositories?q=$web`)
+export const writeOrg = (name) => async (dispatch) => {
+  let repos, contrs
+  await axios.get(`https://api.github.com/orgs/${name}/repos`)
     .then(res => res.data)
     .then(info => {
-      console.log("Info is", info)
+      repos = info
+      console.log("Repos are", info)
     })
+    .catch(err => console.log(err))
+  await axios.get(`https://api.github.com/orgs/${name}/members`)
+    .then(res => res.data)
+    .then(info => {
+      contrs = info
+      console.log("Contrs are", info)
+    })
+    .catch(err => console.log(err))
+
+  dispatch(putOrg(name, repos, contrs))
 }
 
 /**
@@ -43,7 +47,7 @@ export const writeOrg = (org) => (dispatch) => {
 export default function(state = defaultOrg, action) {
   switch (action.type) {
     case PUT_ORG:
-      return action.org
+      return {...state, name: action.name, repos: action.repos, contrs: action.contrs}
     default:
       return state
   }

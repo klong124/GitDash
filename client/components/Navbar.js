@@ -10,7 +10,7 @@ const Navbar = (props) => (
       <div>
         <Link to="/internal-contributors">Top Contributors</Link>
         <Link to="/by-stars">Top Repositories</Link>
-        <input className="form-control" type="text" name="org" placeholder="Enter GitHub organization name" value={props.org} onChange={props.handleChange}/>
+        <input className="form-control" type="text" name="org" placeholder="Enter GitHub organization name" value={props.name} onKeyPress={props.handleChange}/>
       </div>
     </nav>
     <hr />
@@ -19,14 +19,17 @@ const Navbar = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    org: state.org
+    name: state.org.name
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleChange: (event) => {
-      dispatch(writeOrg(event.target.value))
+      let key = event.which || event.keyCode
+      console.log("Key is", key)
+      if (key === 13)
+        dispatch(writeOrg(event.target.value))
     }
   }
 }
