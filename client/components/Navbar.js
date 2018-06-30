@@ -13,7 +13,7 @@ const Navbar = (props) => (
         <input className="form-control" type="text" name="org" placeholder="Enter GitHub organization name" onKeyPress={props.handleChange}/>
         <hr />
         Current Organization is {props.name}
-        <a href="/auth/github">Log In with GitHub</a>
+        {/*<a href="/auth/github">Log In with GitHub</a>*/}
       </div>
     </nav>
     <hr />

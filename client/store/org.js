@@ -45,21 +45,24 @@ const reposWithInf = async (repos) => {
 
 export const writeOrg = (name) => async (dispatch) => {
   let repos, inContrs, exContrs
-  await axios.get(`https://api.github.com/orgs/${name}/repos`)
+  await axios.get(`https://api.github.com/orgs/${name}/repos/?access_token=
+edcf7e7cce02913621207b6145964288726ada44`)
     .then(res => res.data)
     .then(info => {
       repos = reposWithInf(info)
       console.log("Repos are", repos)
     })
     .catch(err => console.log(err))
-  await axios.get(`https://api.github.com/orgs/${name}/members`)
+  await axios.get(`https://api.github.com/orgs/${name}/members/?access_token=
+edcf7e7cce02913621207b6145964288726ada44`)
     .then(res => res.data)
     .then(info => {
       inContrs = info
       console.log("InContrs are", info)
     })
     .catch(err => console.log(err))
-  await axios.get(`https://api.github.com/orgs/${name}/outside_collaborators`)
+  await axios.get(`https://api.github.com/orgs/${name}/outside_collaborators/?access_token=
+edcf7e7cce02913621207b6145964288726ada44`)
     .then(res => res.data)
     .then(info => {
       exContrs = info
