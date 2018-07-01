@@ -16,7 +16,7 @@ const defaultOrg = {}
 /**
  * ACTION CREATORS
  */
-const putOrg = (name, repos, inContrs, exContrs) => ({type: PUT_ORG, name, repos, inContrs, exContrs})
+const putOrg = (name, repos, inContrs, exContrs = null/*for now*/) => ({type: PUT_ORG, name, repos, inContrs, exContrs})
 
 
 /**
