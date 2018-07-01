@@ -2,6 +2,7 @@
   "root": true,
   "extends": ["fullstack", "prettier", "prettier/react"],
   "rules": {
+    "id-length": ["error", { "exceptions": ["x", "a", "b", "i", "j"] }],
     "semi": 0
   }
 }
