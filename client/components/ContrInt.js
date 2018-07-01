@@ -6,7 +6,7 @@ const ContrInt = (props) => {
   return (
     <div>
       <ContrNav/>
-      {/*{props.contributors}*/}
+      INTERNAL CONTRIBUTORS
     </div>
   )
 }

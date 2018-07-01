@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import ContrNav from './ContrNav'
 
-const ContrExt = () => {
+const ContrExt = (props) => {
   return (
     <div>
       <ContrNav/>
@@ -11,4 +11,11 @@ const ContrExt = () => {
   )
 }
 
-export default ContrExt
+const mapStateToProps = (state) => {
+  return {
+    contributors: state.org.inContrs
+  }
+}
+
+export default connect(mapStateToProps)(ContrExt)
+

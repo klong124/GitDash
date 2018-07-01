@@ -44,6 +44,7 @@ const contrsWithInf = async (contrs) => {
   let promises = []
   let contrInf = []
   for (let i = 0; i < contrs.length; i++) {
+    //***********Need to find to correct endpoint to get all contributions made by individual to organization*********
     promises.push(axios.get(contrs[i].contributors_url + `?access_token=${OATHTOKEN}`)
       .then(res => res.data)
       .then(info => {
